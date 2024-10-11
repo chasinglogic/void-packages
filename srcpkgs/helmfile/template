@@ -4,11 +4,12 @@ version=0.168.0
 revision=1
 build_style=go
 go_import_path="github.com/helmfile/helmfile"
-go_package="${go_import_path}"
 go_ldflags="-X go.szostok.io/version.version=${version} -X go.szostok.io/version.dirtyBuild=false"
-short_desc="Declaratively deploy your Kubernetes manifests, Kustomize configs, and Charts as Helm releases. Generate all-in-one manifests for use with ArgoCD."
+short_desc="Declaratively deploy Kubernetes manifests, and Helm Charts"
 maintainer="Mathew Robinson <chasinglogic@gmail.com>"
+checkdepends="kubernetes-helm git curl"
 license="MIT"
+vlicense="LICENSE"
 homepage="https://helmfile.readthedocs.io"
 changelog="https://github.com/helmfile/helmfile/releases"
 distfiles="https://github.com/helmfile/helmfile/archive/refs/tags/v${version}.tar.gz"
