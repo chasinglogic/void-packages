@@ -1,0 +1,23 @@
+# Template file for 'helmfile'
+pkgname=helmfile
+version=0.168.0
+revision=1
+build_style=go
+go_import_path="github.com/helmfile/helmfile"
+go_package="${go_import_path}"
+go_ldflags="-X go.szostok.io/version.version=${version} -X go.szostok.io/version.dirtyBuild=false"
+short_desc="Declaratively deploy your Kubernetes manifests, Kustomize configs, and Charts as Helm releases. Generate all-in-one manifests for use with ArgoCD."
+maintainer="Mathew Robinson <chasinglogic@gmail.com>"
+license="MIT"
+homepage="https://helmfile.readthedocs.io"
+changelog="https://github.com/helmfile/helmfile/releases"
+distfiles="https://github.com/helmfile/helmfile/archive/refs/tags/v${version}.tar.gz"
+checksum=6b5efb52a5246b1c1d740d979a5e90f7219a987b7f4e1fd5d09a3c6846b5489b
+
+pre_build() {
+	local _date
+	if [ "$SOURCE_DATE_EPOCH" ]; then
+		_date="$(date --utc --date "@$SOURCE_DATE_EPOCH" "+%Y-%m-%d")"
+		go_ldflags="$go_ldflags -X go.szostok.io/version.buildDate=${_date}"
+	fi
+}

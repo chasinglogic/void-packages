@@ -1,0 +1,2 @@
+site="https://github.com/helmfile/helmfile/releases"
+pattern='/tags/v\K[\d.]+(?=.tar.gz)'
